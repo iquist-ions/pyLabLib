@@ -135,6 +135,7 @@ class AndorSDK2Camera(camera.IBinROICamera, camera.IExposureCamera):
         self._add_settings_variable("hsspeed",self.get_hsspeed,lambda x:self.set_amp_mode(hsspeed=x))
         self._add_settings_variable("preamp",self.get_preamp,lambda x:self.set_amp_mode(preamp=x),ignore_error=AndorSDK2LibError)
         self._add_settings_variable("vsspeed",self.get_vsspeed,self.set_vsspeed,ignore_error=AndorSDK2LibError)
+        # self._add_settings_variable("vsamp", self.get_vs, self.set_vsspeed, ignore_error=AndorSDK2LibError)
         self._add_settings_variable("EMCCD_gain",self.get_EMCCD_gain,self.set_EMCCD_gain,ignore_error=AndorSDK2LibError)
         self._add_settings_variable("shutter",self.get_shutter_parameters,self.setup_shutter,ignore_error=AndorSDK2LibError)
         self._add_settings_variable("fan_mode",self.get_fan_mode,self.set_fan_mode,ignore_error=AndorSDK2LibError)
