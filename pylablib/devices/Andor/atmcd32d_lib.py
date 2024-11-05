@@ -345,6 +345,8 @@ class AndorSDK2Lib:
         self.SetAccumulationCycleTime=wrapper(lib.SetAccumulationCycleTime)
         #  ctypes.c_uint SetFrameTransferMode(ctypes.c_int mode)
         self.SetFrameTransferMode=wrapper(lib.SetFrameTransferMode)
+        #  ctypes.c_uint SetCameraLinkMode(ctypes.c_int mode)
+        self.SetCameraLinkMode = wrapper(lib.SetCameraLinkMode)
         #  ctypes.c_uint GetReadOutTime(ctypes.POINTER(ctypes.c_float) ReadOutTime)
         self.GetReadOutTime=wrapper(lib.GetReadOutTime)
         #  ctypes.c_uint GetKeepCleanTime(ctypes.POINTER(ctypes.c_float) KeepCleanTime)

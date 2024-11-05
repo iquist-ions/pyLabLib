@@ -147,6 +147,7 @@ class AndorSDK2Camera(camera.IBinROICamera, camera.IExposureCamera):
         self._add_settings_variable("acq_mode",self.get_acquisition_mode,self.set_acquisition_mode)
         self._add_status_variable("acq_status",self.get_status)
         self._add_settings_variable("frame_transfer",self.is_frame_transfer_enabled,self.enable_frame_transfer_mode,ignore_error=AndorSDK2LibError)
+        self._add_settings_variable("camera_link", self.is_camera_link_enabled, self.enable_camera_link,ignore_error=AndorSDK2LibError)
         self._add_status_variable("cycle_timings",self.get_cycle_timings)
         self._add_status_variable("readout_time",self.get_readout_time)
         self._add_settings_variable("read_parameters/single_track",self.get_single_track_mode_parameters,self.setup_single_track_mode)
@@ -816,6 +817,20 @@ class AndorSDK2Camera(camera.IBinROICamera, camera.IExposureCamera):
     @_camfunc(getpar="frame_transfer")
     def is_frame_transfer_enabled(self):
         """Return whether the frame transfer mode is enabled"""
+
+    @_camfunc(setpar="camera_link", option=("feat", AC_FEATURES.AC_FEATURES_CAMERALINK))
+    def enable_camera_link(self, enable=True):
+        """
+        Enable camera link.
+
+        For description, see Andor SDK manual.
+        """
+        lib.SetCameraLinkMode(enable)
+        return enable
+
+    @_camfunc(getpar="camera_link")
+    def is_camera_link_enabled(self):
+        """Return whether camera link is enabled"""
     
     @_camfunc
     def get_cycle_timings(self):
